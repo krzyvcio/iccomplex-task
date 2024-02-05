@@ -1,0 +1,23 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormController!
+{% endblock %}
+
+{% block body %}
+
+    <form action="{{ path('uploadZonesShippingCost') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="csvFile" accept=".csv" />
+        <button type="submit" value="Upload">Upload</button>
+
+        {% if errors is defined %}
+            <error>
+                {% for error in errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </error>
+
+        {% endif %}
+
+    </form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormController!
+{% endblock %}
+
+{% block body %}
+
+	{% for zone in zones %}
+
+		<div class="zone">
+			<h2>{{ zone.name }}</h2>
+			<p>Shipping cost:
+				{{ zone.shippingCost }}
+				€</p>
+		</div>
+		<a href="{{ path('uploadZonesShippingCost') }}">Edit</a>
+
+	{% endfor %}
+{% endblock %}

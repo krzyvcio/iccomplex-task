@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormController!
+{% endblock %}
+
+{% block body %}
+
+
+	<form method="POST" action="/">
+		<input type="string" pattern="[0-9]{5}" id="postCode" name="postCode" {% if formDTO.postCode is defined %} value="{{ formDTO.postCode }}" {% endif %} placeholder="Post Code"/>
+		<br>
+		<input type="number" id="totalAmount" name="totalAmount" placeholder="Total Amount" {% if formDTO.totalAmount is defined %} value="{{ formDTO.totalAmount }}" {% endif %}/>
+		<br>
+		<label for="longProduct">
+			Long Product
+			<input type="checkbox" {% if formDTO.longProduct is defined %} {% if formDTO.longProduct == true %} checked {% endif %} {% endif %} id="longProduct" name="longProduct" value="1"/>
+		</label>
+		<br>
+		<button type="submit">Submit</button>
+	</form>
+	{% if errors is defined and errors|length %}
+		<h6>Error</h6>
+		<ul>
+			{% for error in errors %}
+				<li>{{ error }}</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+
+{% endblock %}
